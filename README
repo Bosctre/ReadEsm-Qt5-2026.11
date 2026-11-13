@@ -1,0 +1,12 @@
+This software entirely based on readesm (https://sourceforge.net/projects/readesm/?source=directory) has sudden only some small modifications making its easier use for the users French speaker. Some words not envisaged by the author in translation are now in french and the style of drawing introduces a more correspondent appearance with what the French drivers know.
+You need 'boost' 'gmp' 'libgcrypt' 'qt4' 'qtwebkit' 'python2' 'cmake' 'subversion' on your computer before install.
+To install :
+          cd/readesm/fileformat
+          python3 ./generate.py
+          cd ..
+          mkdir build
+          cd build
+          cmake ..
+          make
+          make install
+

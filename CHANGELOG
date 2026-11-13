@@ -1,0 +1,75 @@
+ReadEsm-Qt5 2026.11 (2026-11)
+  Port of ReadEsm to Qt5 and Debian 13, based on the original program by Andreas Gölzer.
+  This is a modified version of the original; see COPYING (GPLv3 or later).
+
+  * Builds with Qt5 (5.15) and CMake on Debian 13; Qt5 SVG module required.
+  * Activity graphs: full 0-24 h day, correct colours (rest, availability, work, driving,
+    short break, unknown), heights and titles identical to the original program.
+  * Card activity data read from the ring buffer in the card file, last unclosed day skipped.
+  * HTML report rebuilt to match the original report: header, table of contents,
+    collapsible sub-blocks, graphs visible without "show".
+  * New per-month "Timesheet" tables (driving, work, rest, available, Summary row).
+  * Per-day list of activityChangeInfos with raw data.
+  * Empty event, fault and specific-condition slots are no longer listed.
+  * Readable dates (TimeReal, Timespan) in the original formats.
+  * Document title built from the card holder name and the first/last day.
+  * GUI: SVG graphs embedded in the window, working "show/hide" links, graphs above their details.
+  * CardPeek .ddd files read directly (tag, type, length, data).
+  * Console mode works without a display; missing translations no longer print a message.
+  * Application icon and desktop launcher; install rules in CMake.
+  * Removed unused files (obsolete data type headers, old packaging).
+
+Readesm changelog
+2011-11
++ optical fixes
+
+2011-10
++ Lots of internal changes
++ Monthly Timesheets
++ More Accurate visualization of Driver activities, added "unknown" state
++ Show textual representation of activities on demand
++ Should read more files without crashing
++ Hungarian translation, thanks to Mikulás Róbert
+0 Read and show all data, this of course makes it a bit harder to read
+0 Use lists instead of tables in html output
+- No more plaintext output
+- No more classic html output, so generated files cannot be read in old versions of IE
+- Content section at start of generated html has less links
+
+
+2011-04(preliminary, svn)
+* Spanish translation, thanks to Jose Huguet
+* decode extended serial number
+* decode vehicle registration numbers correctly, italian numbers no longer 
+  cause invalid files 
+* Crashes no longer if the last block on a tachograph card file has no signature
+* fixed vanishing first character of some strings (vehicle number etc.)
+* axis labels for svg graphs
+* produced xhtml files have cleaner whitespace and smaller size
+* created icon
+* Linux: register mimetype, create menu entry, associate files
+
+2011-03a
+* more german translation (more or less complete)
+* fixed a bug where readesm reserved one gigabyte of memory to read a file
+
+2011-03
+* fixed more bugs resulting from the QT transition
+
+2011-03pre1
+* Transition to the QT framework
+* Transition to cmake
+* New graphical user interface
+
+0.3.2
+* more bug fixes
+
+0.3.1
+* fixed bug with readesm-wrap-kde using the wrong prefix
+
+0.3.0
+* Transition to sourceforge
+
+no changelog available for older releases
+
+

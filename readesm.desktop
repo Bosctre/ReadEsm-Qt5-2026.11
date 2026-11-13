@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ReadEsm
+Comment=Lecteur de fichiers de chronotachygraphe (.ddd)
+Exec=readesm %f
+Icon=readesm
+Terminal=false
+Categories=Utility;
+MimeType=application/x-ddd;
+StartupNotify=true

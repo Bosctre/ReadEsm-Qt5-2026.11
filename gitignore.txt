@@ -1,0 +1,38 @@
+# build
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+install_manifest.txt
+Makefile
+moc_*.cpp
+qrc_*.cpp
+*.o
+*.d
+*.a
+*.so
+fileformat/config.h
+
+# editors and backups
+*~
+*.swp
+*.bak
+*.orig
+.vscode/
+.idea/
+*.user
+*.autosave
+
+# personal data: never publish card files or reports
+tmp/
+*.ddd
+*.DDD
+*.esm
+*.tgd
+*.c1b
+*.xml.bak
+report*.html
+rapport*.html
+exemple*.*
+
