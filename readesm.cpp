@@ -58,6 +58,7 @@ int main(int argc, char** argv)
     QTranslator qTranslator;
     const QString requestedLocale = parser.get("locale", QString());
     const QString locale = requestedLocale.isEmpty() ? QLocale::system().name() : requestedLocale;
+    if (locale != "C") QLocale::setDefault(QLocale(locale));
     if (locale != "C") {
         const QString trans = "readesm_" + locale;
         const bool loaded = qTranslator.load(trans)

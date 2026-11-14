@@ -1,11 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="de">
-<defaultcodec>UTF-8</defaultcodec>
+<context>
+    <name>ActivityChangeDetail</name>
+    <message>
+        <location filename="../../fileformat/DataTypes/ActivityChangeDetail.h" line="+38"/>
+        <source>%1 for %2 h</source>
+        <translation>%1 für %2 Std.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>activity</source>
+        <translation>Tätigkeit</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>time</source>
+        <translation>Zeit</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>slot status</source>
+        <translation>Status von Karte und Schacht</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Raw data</source>
+        <translation>Rohdaten</translation>
+    </message>
+</context>
+<context>
+    <name>ActivityDrawing</name>
+    <message>
+        <location filename="../../fileformat/PictureGenerators/ActivityDrawing.h" line="+29"/>
+        <source>unknown</source>
+        <translation>unbekannt</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>short break</source>
+        <translation>kurze Pause</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>break/rest</source>
+        <translation>Pause/Ruhe</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>availability</source>
+        <translation>Bereitschaft</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>work</source>
+        <translation>Arbeit</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>driving</source>
+        <translation>Lenken</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>crew</source>
+        <translation>Besatzung</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>single</source>
+        <translation>Einzelbesatzung</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>following activity manually entered</source>
+        <translation>folgende Tätigkeit manuell eingegeben</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>following activity unknown</source>
+        <translation>folgende Tätigkeit unbekannt</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Card inserted</source>
+        <translation>Karte eingesteckt</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Card not inserted or withdrawn</source>
+        <translation>Karte nicht eingesteckt oder entnommen</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>co-driver slot</source>
+        <translation>Beifahrer-Schacht</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>driver slot</source>
+        <translation>Fahrer-Schacht</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>from %1 to %2 (%3 h)</source>
+        <translation>von %1 bis %2 (%3 Std.)</translation>
+    </message>
+    <message>
+        <location line="+66"/>
+        <source>Timesheet for %1:</source>
+        <translation>Zeiterfassung für %1:</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Driving</source>
+        <translation>Lenken</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Working</source>
+        <translation>Arbeit</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Rest</source>
+        <translation>Ruhe</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Available</source>
+        <translation>Bereitschaft</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Summary</source>
+        <translation>Summe</translation>
+    </message>
+</context>
 <context>
     <name>BcdDate</name>
     <message>
-        <location filename="../../fileformat/DataTypes/BcdDate.cpp" line="+33"/>
+        <location filename="../../fileformat/DataTypes/BcdDate.cpp" line="+20"/>
         <source>encodedDate</source>
         <translation>Datum</translation>
     </message>
@@ -13,7 +148,7 @@
 <context>
     <name>BcdMonthYear</name>
     <message>
-        <location filename="../../fileformat/DataTypes/BcdMonthYear.cpp" line="+33"/>
+        <location filename="../../fileformat/DataTypes/BcdMonthYear.cpp" line="+21"/>
         <source>encodedDate</source>
         <translation>Datum</translation>
     </message>
@@ -62,7 +197,7 @@
 <context>
     <name>Block11Record</name>
     <message>
-        <location filename="../../fileformat/DataTypes/Block11Record.cpp" line="+32"/>
+        <location filename="../../fileformat/DataTypes/Block11Record.cpp" line="+19"/>
         <source>cardNumber</source>
         <translation>Kartennummer</translation>
     </message>
@@ -139,7 +274,7 @@
 <context>
     <name>CardActivityDailyRecord</name>
     <message>
-        <location filename="../../fileformat/DataTypes/RawCardActivityDailyRecord.cpp" line="+37"/>
+        <location filename="../../fileformat/DataTypes/RawCardActivityDailyRecord.cpp" line="+24"/>
         <source>activityRecordPreviousLength</source>
         <translation>Länge des vorherigen Datensatzes</translation>
     </message>
@@ -164,26 +299,43 @@
         <translation>Gefahrene Strecke</translation>
     </message>
     <message>
-        <location filename="../../fileformat/DataTypes/CardActivityDailyRecord.cpp" line="+37"/>
+        <location filename="../../fileformat/DataTypes/CardActivityDailyRecord.cpp" line="+32"/>
         <source>Visualization</source>
         <translation>Visualisierung</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>activityChangeInfos</source>
         <translation>Aktivitätsänderungshinweise</translation>
     </message>
     <message>
-        <location line="+4"/>
         <location filename="../../fileformat/DataTypes/RawCardActivityDailyRecord.cpp" line="-12"/>
         <source>Activities on %1</source>
         <translation>Aktivitäten am %1</translation>
     </message>
 </context>
 <context>
+    <name>CardBlock</name>
+    <message>
+        <location filename="../../fileformat/CardBlocks/CardBlock.cpp" line="+30"/>
+        <source>Unknown block with tag 0x%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Payload size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>data</source>
+        <translation type="unfinished">Daten</translation>
+    </message>
+</context>
+<context>
     <name>CardCertificate</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardCertificate.cpp" line="+25"/>
+        <location filename="../../fileformat/CardBlocks/CardCertificate.cpp" line="+12"/>
         <source>Card Certificate</source>
         <translation>Kartenzertifikat</translation>
     </message>
@@ -196,7 +348,7 @@
 <context>
     <name>CardChipIdentification</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardChipIdentification.cpp" line="+26"/>
+        <location filename="../../fileformat/CardBlocks/CardChipIdentification.cpp" line="+14"/>
         <source>Card chip identification</source>
         <translation>Identifizierung des Integrierten Schaltkreises der Karte</translation>
     </message>
@@ -214,7 +366,7 @@
 <context>
     <name>CardControlActivityDataRecord</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardControlActivityDataRecord.cpp" line="+29"/>
+        <location filename="../../fileformat/CardBlocks/CardControlActivityDataRecord.cpp" line="+16"/>
         <source>Control Activity Data</source>
         <translation>Übersicht über Kontrollen</translation>
     </message>
@@ -247,7 +399,7 @@
 <context>
     <name>CardCurrentUse</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardCurrentUse.cpp" line="+26"/>
+        <location filename="../../fileformat/CardBlocks/CardCurrentUse.cpp" line="+13"/>
         <source>Current Usage</source>
         <translation>Derzeitige Benutzung</translation>
     </message>
@@ -265,12 +417,13 @@
 <context>
     <name>CardDriverActivity</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/RawCardDriverActivity.cpp" line="+27"/>
+        <location filename="../../fileformat/CardBlocks/CardDriverActivity.cpp" line="+46"/>
+        <location filename="../../fileformat/CardBlocks/RawCardDriverActivity.cpp" line="+14"/>
         <source>Driver Activity Data</source>
         <translation>Fahrertätigkeitsdaten</translation>
     </message>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardDriverActivity.cpp" line="+39"/>
+        <location line="+3"/>
         <location filename="../../fileformat/CardBlocks/RawCardDriverActivity.cpp" line="+4"/>
         <source>oldestRecord</source>
         <translation>Ältester Eintrag</translation>
@@ -282,23 +435,26 @@
         <translation>Neuester Eintrag</translation>
     </message>
     <message>
+        <location line="+5"/>
+        <source>Activities on %1</source>
+        <translation>Tätigkeiten am %1</translation>
+    </message>
+    <message>
         <location filename="../../fileformat/CardBlocks/RawCardDriverActivity.cpp" line="+1"/>
         <source>cyclicData</source>
         <translation>Zyklische Daten</translation>
     </message>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardDriverActivity.cpp" line="+1"/>
+        <location filename="../../fileformat/CardBlocks/CardDriverActivity.cpp" line="-2"/>
         <source>cardActivityDailyRecords</source>
         <translation>Karteneinträge über Tagesaktivitäten</translation>
     </message>
     <message>
-        <location line="+5"/>
-        <location line="+7"/>
         <source>Timesheet for %1</source>
         <translation>Stundenzettel für %1</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>Timesheet</source>
         <translation>Stundenzettel</translation>
     </message>
@@ -306,7 +462,7 @@
 <context>
     <name>CardDrivingLicenseInformation</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardDrivingLicenseInformation.cpp" line="+27"/>
+        <location filename="../../fileformat/CardBlocks/CardDrivingLicenseInformation.cpp" line="+15"/>
         <source>Driving License Info</source>
         <translation>Führerscheininformationen</translation>
     </message>
@@ -329,7 +485,7 @@
 <context>
     <name>CardEventData</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardEventData.cpp" line="+25"/>
+        <location filename="../../fileformat/CardBlocks/CardEventData.cpp" line="+12"/>
         <source>Events Data</source>
         <translation>Ereignisdaten</translation>
     </message>
@@ -342,7 +498,7 @@
 <context>
     <name>CardEventRecord</name>
     <message>
-        <location filename="../../fileformat/DataTypes/CardEventRecord.cpp" line="+31"/>
+        <location filename="../../fileformat/DataTypes/CardEventRecord.cpp" line="+20"/>
         <source>eventType</source>
         <translation>Ereignisart</translation>
     </message>
@@ -360,7 +516,7 @@
 <context>
     <name>CardFaultData</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardFaultData.cpp" line="+25"/>
+        <location filename="../../fileformat/CardBlocks/CardFaultData.cpp" line="+12"/>
         <source>Faults Data</source>
         <translation>Fehlerdaten</translation>
     </message>
@@ -373,7 +529,7 @@
 <context>
     <name>CardIccIdentification</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardIccIdentification.cpp" line="+30"/>
+        <location filename="../../fileformat/CardBlocks/CardIccIdentification.cpp" line="+17"/>
         <source>Card ICC identification</source>
         <translation>Informationen zur Identifizierung der Chipkarte</translation>
     </message>
@@ -411,7 +567,7 @@
 <context>
     <name>CardPlaceDailyWorkPeriod</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardPlaceDailyWorkPeriod.cpp" line="+26"/>
+        <location filename="../../fileformat/CardBlocks/CardPlaceDailyWorkPeriod.cpp" line="+14"/>
         <source>Places</source>
         <translation>Orte</translation>
     </message>
@@ -429,36 +585,30 @@
 <context>
     <name>CardSlots</name>
     <message>
-        <location filename="../../fileformat/DataTypes/CardSlots.cpp" line="+9"/>
-        <location filename="../../fileformat/DataTypes/RawCardSlots.cpp" line="+32"/>
+        <location filename="../../fileformat/DataTypes/RawCardSlots.cpp" line="+19"/>
         <source>cardNumberDriverSlotBegin</source>
         <translation>Kartennummer des Fahrers bei Ereignisbeginn</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../fileformat/DataTypes/RawCardSlots.cpp" line="+2"/>
         <source>cardNumberDriverSlotEnd</source>
         <translation>Kartennummer des Fahrers bei Ereignisende</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>cardNumberDriverSlot</source>
         <translation>Kartennummer des Fahrers</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <location filename="../../fileformat/DataTypes/RawCardSlots.cpp" line="-1"/>
+        <location line="-1"/>
         <source>cardNumberCoDriverSlotBegin</source>
         <translation>Kartennummer des Beifahrers bei Ereignisbeginn</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../fileformat/DataTypes/RawCardSlots.cpp" line="+2"/>
         <source>cardNumberCoDriverSlotEnd</source>
         <translation>Kartennummer des Beifahrers bei Ereignisende</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>cardNumberCoDriverSlot</source>
         <translation>Kartennummer des Beifahrers</translation>
     </message>
@@ -466,7 +616,7 @@
 <context>
     <name>CardVehicleRecord</name>
     <message>
-        <location filename="../../fileformat/DataTypes/CardVehicleRecord.cpp" line="+33"/>
+        <location filename="../../fileformat/DataTypes/CardVehicleRecord.cpp" line="+20"/>
         <source>%1 km on %2 (%3)</source>
         <translation>%1 km auf %2 (%3)</translation>
     </message>
@@ -499,7 +649,7 @@
 <context>
     <name>CardVehiclesUsed</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/CardVehiclesUsed.cpp" line="+26"/>
+        <location filename="../../fileformat/CardBlocks/CardVehiclesUsed.cpp" line="+13"/>
         <source>Vehicles Used</source>
         <translation>Benutzte Fahrzeuge</translation>
     </message>
@@ -517,7 +667,7 @@
 <context>
     <name>CertificateAuthority</name>
     <message>
-        <location filename="../../fileformat/DataTypes/CertificateAuthority.cpp" line="+33"/>
+        <location filename="../../fileformat/DataTypes/CertificateAuthority.cpp" line="+22"/>
         <source>nationNumeric</source>
         <translation>Land (numerisch)</translation>
     </message>
@@ -545,7 +695,7 @@
 <context>
     <name>CertificateHolderAuthorization</name>
     <message>
-        <location filename="../../fileformat/DataTypes/CertificateHolderAuthorization.cpp" line="+30"/>
+        <location filename="../../fileformat/DataTypes/CertificateHolderAuthorization.cpp" line="+19"/>
         <source>tachographApplicationId</source>
         <translation>Anwendungsbezeichner für die Kontrollgerätanwendung</translation>
     </message>
@@ -556,9 +706,17 @@
     </message>
 </context>
 <context>
+    <name>ConcreteRawData</name>
+    <message>
+        <location filename="../../fileformat/DataTypes/ConcreteRawData.cpp" line="+16"/>
+        <source>Raw Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DecryptedCertificate</name>
     <message>
-        <location filename="../../fileformat/DataTypes/DecryptedCertificate.cpp" line="+34"/>
+        <location filename="../../fileformat/DataTypes/DecryptedCertificate.cpp" line="+21"/>
         <source>certificateProfileIdentifier</source>
         <translation>Version des Zertifikats</translation>
     </message>
@@ -591,7 +749,7 @@
 <context>
     <name>DriverCardApplicationIdentification</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/DriverCardApplicationIdentification.cpp" line="+31"/>
+        <location filename="../../fileformat/CardBlocks/DriverCardApplicationIdentification.cpp" line="+20"/>
         <source>Application Identification</source>
         <translation>Anwendungskennung</translation>
     </message>
@@ -634,12 +792,10 @@
 <context>
     <name>ESMFile</name>
     <message>
-        <location filename="../../fileformat/EsmFile.cpp" line="+54"/>
         <source>Could not read any data from file &apos;%1&apos;.</source>
         <translation>Konnte keine Daten von Datei &apos;%1&apos; lesen.</translation>
     </message>
     <message>
-        <location line="+45"/>
         <source>%1 to %2</source>
         <translation>%1 bis %2</translation>
     </message>
@@ -647,17 +803,15 @@
 <context>
     <name>EncryptedCertificate</name>
     <message>
-        <location filename="../../fileformat/DataTypes/EncryptedCertificate.cpp" line="+50"/>
         <source>Certificate verified from:</source>
         <translation>Zertifikat verifiziert durch:</translation>
     </message>
     <message>
-        <location line="+2"/>
         <source>Unverified certificate, needs verification from:</source>
         <translation>Nichtverifiziertes Zertifikat, erfordert Verifizierung durch:</translation>
     </message>
     <message>
-        <location filename="../../fileformat/DataTypes/RawEncryptedCertificate.cpp" line="+31"/>
+        <location filename="../../fileformat/DataTypes/RawEncryptedCertificate.cpp" line="+18"/>
         <source>sign</source>
         <translation>Signatur</translation>
     </message>
@@ -673,9 +827,22 @@
     </message>
 </context>
 <context>
+    <name>EsmFile</name>
+    <message>
+        <location filename="../../fileformat/EsmFile.cpp" line="+16"/>
+        <source>Could not read any data from file &apos;%1&apos;.</source>
+        <translation type="unfinished">Konnte keine Daten von Datei &apos;%1&apos; lesen.</translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/EsmFile.h" line="+40"/>
+        <source>Test translation</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ExtendedSerialNumber</name>
     <message>
-        <location filename="../../fileformat/DataTypes/ExtendedSerialNumber.cpp" line="+41"/>
+        <location filename="../../fileformat/DataTypes/ExtendedSerialNumber.cpp" line="+30"/>
         <source>serialNumber</source>
         <translation>Seriennummer</translation>
     </message>
@@ -698,12 +865,11 @@
 <context>
     <name>FullCardNumber</name>
     <message>
-        <location filename="../../fileformat/DataTypes/FullCardNumber.cpp" line="+8"/>
         <source>%1, card holder: %2</source>
         <translation>%1, Karteninhaber: %2</translation>
     </message>
     <message>
-        <location filename="../../fileformat/DataTypes/RawFullCardNumber.cpp" line="+38"/>
+        <location filename="../../fileformat/DataTypes/RawFullCardNumber.cpp" line="+23"/>
         <source>cardType</source>
         <translation>Kartenart</translation>
     </message>
@@ -721,23 +887,38 @@
 <context>
     <name>HtmlReporter</name>
     <message>
-        <location filename="../../fileformat/Reporter/HtmlReporter.cpp" line="+17"/>
+        <location filename="../../fileformat/Reporter/HtmlReporter.cpp" line="+81"/>
         <source>Content</source>
         <translation>Inhalt</translation>
     </message>
     <message>
-        <location line="+41"/>
-        <location line="+12"/>
+        <location line="-2"/>
+        <location line="+83"/>
+        <location line="+17"/>
+        <location filename="../../gui/SvgTextBrowser.h" line="+114"/>
         <source>hide</source>
         <translation>verstecken</translation>
     </message>
     <message>
-        <location line="-12"/>
-        <location line="+11"/>
+        <location line="-103"/>
+        <source>en-US</source>
+        <translation>de-DE</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location line="+55"/>
+        <location line="+29"/>
+        <location line="+17"/>
         <source>show</source>
         <translation>anzeigen</translation>
     </message>
     <message>
+        <location line="-94"/>
+        <source>Report generated with %1</source>
+        <translation>Bericht erstellt mit %1</translation>
+    </message>
+    <message>
+        <location line="+73"/>
         <location line="+14"/>
         <source>No %1.</source>
         <translation>Keine %1.</translation>
@@ -746,7 +927,7 @@
 <context>
     <name>Identification</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/Identification.cpp" line="+33"/>
+        <location filename="../../fileformat/CardBlocks/Identification.cpp" line="+21"/>
         <source>Card identification and card holder identification</source>
         <translation>Kartenidentifikation und Identität des Karteninhabers</translation>
     </message>
@@ -822,7 +1003,7 @@
 <context>
     <name>LastCardDownload</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/LastCardDownload.cpp" line="+25"/>
+        <location filename="../../fileformat/CardBlocks/LastCardDownload.cpp" line="+12"/>
         <source>Card Download</source>
         <translation>Herunterladen einer Karte</translation>
     </message>
@@ -835,7 +1016,7 @@
 <context>
     <name>MemberStateCertificate</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/MemberStateCertificate.cpp" line="+25"/>
+        <location filename="../../fileformat/CardBlocks/MemberStateCertificate.cpp" line="+12"/>
         <source>CA Certificate</source>
         <translation>CA-Zertifikat</translation>
     </message>
@@ -848,7 +1029,7 @@
 <context>
     <name>Name</name>
     <message>
-        <location filename="../../fileformat/DataTypes/Name.cpp" line="+34"/>
+        <location filename="../../fileformat/DataTypes/Name.cpp" line="+21"/>
         <source>surname</source>
         <translation>Nachname</translation>
     </message>
@@ -861,17 +1042,14 @@
 <context>
     <name>OptionParser</name>
     <message>
-        <location filename="../../OptionParser.cpp" line="+8"/>
         <source>Show help text</source>
         <translation>Hilfetext anzeigen</translation>
     </message>
     <message>
-        <location line="+59"/>
         <source>Possible Flags:</source>
         <translation>Mögliche Flags:</translation>
     </message>
     <message>
-        <location line="+0"/>
         <source>Possible Options:</source>
         <translation>Mögliche Optionen:</translation>
     </message>
@@ -879,7 +1057,7 @@
 <context>
     <name>PlaceRecord</name>
     <message>
-        <location filename="../../fileformat/DataTypes/PlaceRecord.cpp" line="+41"/>
+        <location filename="../../fileformat/DataTypes/PlaceRecord.cpp" line="+30"/>
         <source>entryTime</source>
         <translation>Eingabezeit</translation>
     </message>
@@ -907,7 +1085,7 @@
 <context>
     <name>PlainCertificate</name>
     <message>
-        <location filename="../../fileformat/DataTypes/PlainCertificate.cpp" line="+30"/>
+        <location filename="../../fileformat/DataTypes/PlainCertificate.cpp" line="+17"/>
         <source>keyIdentifier</source>
         <translation>Schlüsselidentifikation</translation>
     </message>
@@ -920,35 +1098,162 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../fileformat/overtime.h" line="+56"/>
         <source>Daily driving time</source>
         <translation>Tageslenkzeit</translation>
     </message>
     <message>
-        <location line="+15"/>
         <source>driven for </source>
         <translation>gefahren für</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>only</source>
         <translation>nur</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>recorded</source>
         <translation>aufgezeichnet</translation>
     </message>
     <message>
-        <location filename="../../fileformat/TopLevelBlock.cpp" line="+39"/>
         <source>signature</source>
         <translation>Signatur</translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/CardBlocks/CardAddress.cpp" line="+17"/>
+        <source>Card Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Payload size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/CardBlocks/CardHeader.cpp" line="+21"/>
+        <location line="+4"/>
+        <source>Card Header</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Header Bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/CardBlocks/CardMunicipalityInfo.cpp" line="+12"/>
+        <source>Municipality Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Municipality Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/CardBlocks/CardPhoto.cpp" line="+14"/>
+        <location line="+4"/>
+        <source>Card Photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/CardBlocks/CardValidity.cpp" line="+12"/>
+        <location line="+4"/>
+        <source>Document Validity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/DataTypes/ActivityChangeInfo.cpp" line="+15"/>
+        <source>Slot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/DataTypes/CardSlots.cpp" line="+14"/>
+        <source>cardNumberDriverSlotBegin</source>
+        <translation type="unfinished">Kartennummer des Fahrers bei Ereignisbeginn</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>cardNumberDriverSlotEnd</source>
+        <translation type="unfinished">Kartennummer des Fahrers bei Ereignisende</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>cardNumberDriverSlot</source>
+        <translation type="unfinished">Kartennummer des Fahrers</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>cardNumberCoDriverSlotBegin</source>
+        <translation type="unfinished">Kartennummer des Beifahrers bei Ereignisbeginn</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>cardNumberCoDriverSlotEnd</source>
+        <translation type="unfinished">Kartennummer des Beifahrers bei Ereignisende</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>cardNumberCoDriverSlot</source>
+        <translation type="unfinished">Kartennummer des Beifahrers</translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/DataTypes/EncryptedCertificate.cpp" line="+24"/>
+        <source>Encrypted Certificate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/DataTypes/KeyIdentifier.cpp" line="+23"/>
+        <source>Key Identifier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/DataTypes/RawData.cpp" line="+31"/>
+        <source>Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/DataTypes/TimeReal.cpp" line="+32"/>
+        <source>TimeReal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/DataTypes/Timespan.cpp" line="+33"/>
+        <source>begin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>end</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/DDDReader.cpp" line="+14"/>
+        <source>Failed to open file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/TopLevelBlock.cpp" line="+33"/>
+        <source>Unknown block type 0x%1</source>
+        <translation type="unfinished">Unbekannte Art eines Blocks: 0x%1</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>length</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>RawData</name>
     <message>
-        <location filename="../../fileformat/DataTypes/RawData.cpp" line="+23"/>
         <source>All %1 Byte are zeroed.</source>
         <translation>Alle %1 Byte sind null.</translation>
     </message>
@@ -982,7 +1287,7 @@
 <context>
     <name>SpecificConditions</name>
     <message>
-        <location filename="../../fileformat/CardBlocks/SpecificConditions.cpp" line="+25"/>
+        <location filename="../../fileformat/CardBlocks/SpecificConditions.cpp" line="+12"/>
         <source>Specific Conditions</source>
         <translation>Spezifische Bedingungen</translation>
     </message>
@@ -993,9 +1298,71 @@
     </message>
 </context>
 <context>
+    <name>SvgDayActivity</name>
+    <message>
+        <source>break/rest</source>
+        <translation>Ruhepause</translation>
+    </message>
+    <message>
+        <source>short break</source>
+        <translation>kurze Pause</translation>
+    </message>
+    <message>
+        <source>working</source>
+        <translation>Arbeit</translation>
+    </message>
+    <message>
+        <source>driving</source>
+        <translation>Fahren</translation>
+    </message>
+    <message>
+        <source>available</source>
+        <translation>verfügbar</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>unbekannt</translation>
+    </message>
+    <message>
+        <source>Time of day (UTC)</source>
+        <translation>Tageszeit (UTC)</translation>
+    </message>
+    <message>
+        <source>= available</source>
+        <translation>= Bereitschaft</translation>
+    </message>
+    <message>
+        <source>= driving</source>
+        <translation>= Lenken</translation>
+    </message>
+    <message>
+        <source>= working</source>
+        <translation>= Arbeit</translation>
+    </message>
+    <message>
+        <source>= short break</source>
+        <translation>= kurze Pause</translation>
+    </message>
+    <message>
+        <source>= break/rest</source>
+        <translation>= Pause/Ruhe</translation>
+    </message>
+    <message>
+        <source>= unknown</source>
+        <translation>= unbekannt</translation>
+    </message>
+</context>
+<context>
+    <name>SvgDayGraph</name>
+    <message>
+        <location filename="../../fileformat/PictureGenerators/SvgDayGraph.cpp" line="+9"/>
+        <source>Time of day (UTC)</source>
+        <translation>Uhrzeit (UTC)</translation>
+    </message>
+</context>
+<context>
     <name>TimeReal</name>
     <message>
-        <location filename="../../fileformat/DataTypes/TimeReal.cpp" line="+13"/>
         <source>undefined</source>
         <translation>undefiniert</translation>
     </message>
@@ -1003,32 +1370,26 @@
 <context>
     <name>Timespan</name>
     <message>
-        <location filename="../../fileformat/DataTypes/Timespan.cpp" line="+9"/>
         <source>undefined</source>
         <translation>undefiniert</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>From %1 on, end undefined</source>
         <translation>Von %1 an, Endzeitpunkt undefiniert</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>From undefined time until %1</source>
         <translation>Von undefinierter Zeit an, bis %1</translation>
     </message>
     <message>
-        <location line="+5"/>
         <source>%1 days</source>
         <translation>%1 Tage</translation>
     </message>
     <message>
-        <location line="+9"/>
         <source>On %1, from %2 to %3 (%4)</source>
         <translation>Am %1, von %2 bis %3 (%4)</translation>
     </message>
     <message>
-        <location line="+6"/>
         <source>From %1 to %2 (%4)</source>
         <translation>Von %1 bis %2 (%4)</translation>
     </message>
@@ -1036,27 +1397,22 @@
 <context>
     <name>TopLevelBlock</name>
     <message>
-        <location filename="../../fileformat/TopLevelBlock.cpp" line="-10"/>
         <source>Block has valid signature</source>
         <translation>Block ist gültig signiert</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Beware: Block has invalid signature</source>
         <translation>Vorsicht: Blocksignatur ungültig</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Block not signed</source>
         <translation>Block nicht signiert</translation>
     </message>
     <message>
-        <location line="+2"/>
         <source>no crypto support compiled in</source>
         <translation>Kompiliert ohne Kryptographieunterstützung</translation>
     </message>
     <message>
-        <location line="+16"/>
         <source>Unknown block type 0x%1</source>
         <translation>Unbekannte Art eines Blocks: 0x%1</translation>
     </message>
@@ -1078,7 +1434,7 @@
     <name>VuActivities</name>
     <message>
         <location filename="../../fileformat/VuBlocks/RawVuActivities.cpp" line="+38"/>
-        <location filename="../../fileformat/VuBlocks/VuActivities.cpp" line="+21"/>
+        <location filename="../../fileformat/VuBlocks/VuActivities.cpp" line="+14"/>
         <source>timeReal</source>
         <translation>Zeit</translation>
     </message>
@@ -1090,13 +1446,13 @@
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../fileformat/VuBlocks/VuActivities.cpp" line="+11"/>
+        <location filename="../../fileformat/VuBlocks/VuActivities.cpp" line="+6"/>
         <source>vuCardIWRecords</source>
         <translation>Karteneinschub- und Kartenentnahmevorgänge</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../fileformat/VuBlocks/VuActivities.cpp" line="+15"/>
+        <location filename="../../fileformat/VuBlocks/VuActivities.cpp" line="+1"/>
         <source>activityChangeInfos</source>
         <translation>Aktivitätsänderungshinweise</translation>
     </message>
@@ -1114,30 +1470,30 @@
     </message>
     <message>
         <location line="-13"/>
-        <location filename="../../fileformat/VuBlocks/VuActivities.cpp" line="-33"/>
+        <location filename="../../fileformat/VuBlocks/VuActivities.cpp" line="-14"/>
         <source>Activities on %1</source>
         <translation>Aktivitäten am %1</translation>
     </message>
     <message>
-        <location filename="../../fileformat/VuBlocks/VuActivities.cpp" line="+10"/>
-        <location line="+2"/>
         <source>%1 (%2 to %3)</source>
         <translation>%1 (%2 bis %3)</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Drivers</source>
         <translation>Fahrer</translation>
     </message>
     <message>
-        <location line="+12"/>
         <source>Activities Driver</source>
         <translation>Fahreraktivitäten</translation>
     </message>
     <message>
-        <location line="+0"/>
         <source>Activities Codriver</source>
         <translation>Beifahreraktivitäten</translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/VuBlocks/VuActivities.cpp" line="+9"/>
+        <source>Visualization</source>
+        <translation type="unfinished">Visualisierung</translation>
     </message>
 </context>
 <context>
@@ -1683,123 +2039,103 @@
 <context>
     <name>VuUnknownBlock</name>
     <message>
-        <location filename="../../fileformat/VuBlocks/VuUnknownBlock.cpp" line="+14"/>
         <source>Unknown Vu block, TREP %1</source>
         <translation>Unbekannter Fahrzeugeinheit-Block, TREP %1</translation>
+    </message>
+    <message>
+        <location filename="../../fileformat/VuBlocks/VuUnknownBlock.cpp" line="+18"/>
+        <source>Unknown Vu block, TREP 0x%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Raw Data</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>activityChangeInfo</name>
     <message>
-        <location filename="../../fileformat/DataTypes/ActivityChangeInfo.cpp" line="+43"/>
         <source>break/rest</source>
         <translation>Ruhepause</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>availability</source>
         <translation>Verfügbarkeit</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>work</source>
         <translation>Arbeit</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>driving</source>
         <translation>Lenken</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>unknown</source>
         <translation>unbekannt</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>short break</source>
         <translation>kurze Pause</translation>
     </message>
     <message>
-        <location line="+2"/>
         <source>unknown activity</source>
         <translation>unbekannte Tätigkeit</translation>
     </message>
     <message>
-        <location line="+20"/>
         <source>from %1 to %2 (%3 h)</source>
         <translation>von %1 bis %2 (%3 Stunden)</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+5"/>
         <source>Card inserted</source>
         <translation>Karte eingesteckt</translation>
     </message>
     <message>
-        <location line="-5"/>
-        <location line="+9"/>
         <source>Card not inserted or withdrawn</source>
         <translation>Karte nicht gesteckt oder entnommen</translation>
     </message>
     <message>
-        <location line="-8"/>
-        <location line="+5"/>
-        <location line="+4"/>
         <source>driver slot</source>
         <translation>Karteneinschub Fahrer</translation>
     </message>
     <message>
-        <location line="-9"/>
-        <location line="+5"/>
-        <location line="+4"/>
         <source>co-driver slot</source>
         <translation>Karteneinschub Beifahrer</translation>
     </message>
     <message>
-        <location line="-8"/>
-        <location line="+5"/>
         <source>single</source>
         <translation>Einmannbetrieb</translation>
     </message>
     <message>
-        <location line="-5"/>
-        <location line="+5"/>
         <source>crew</source>
         <translation>Team</translation>
     </message>
     <message>
-        <location line="+23"/>
         <source>activity</source>
         <translation>Tätigkeit</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>time</source>
         <translation>Dauer</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>slot status</source>
         <translation>Zustand des Karteneinschubs</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Raw data</source>
         <translation>Rohdaten</translation>
     </message>
     <message>
-        <location line="+8"/>
         <source>%1 for %2 h</source>
         <translation>%1, %2 Stunden</translation>
     </message>
     <message>
-        <location line="-30"/>
         <source>following activity unknown</source>
         <translation>nächste Aktivität unbekannt</translation>
     </message>
     <message>
-        <location line="+0"/>
         <source>following activity manually entered</source>
         <translation>nächste Aktivität manuell eingetragen</translation>
     </message>
@@ -2596,47 +2932,57 @@
 <context>
     <name>mainWindow</name>
     <message>
-        <location filename="../../gui/mainWindow.cpp" line="+29"/>
+        <location filename="../../gui/mainWindow.cpp" line="+24"/>
         <source>&amp;File</source>
         <translation>&amp;Datei</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>&amp;Open…</source>
         <translation>&amp;Öffnen …</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Save &amp;As…</source>
         <translation>Speichern &amp;Unter …</translation>
     </message>
     <message>
-        <location line="+2"/>
         <source>&amp;Print…</source>
         <translation>&amp;Drucken …</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+4"/>
         <source>&amp;Quit</source>
         <translation>&amp;Beenden</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+19"/>
         <source>&amp;Help</source>
         <translation>&amp;Hilfe</translation>
     </message>
     <message>
-        <location line="-22"/>
         <source>E&amp;xport as HTML…</source>
         <translation>Als &amp;HTML exportieren …</translation>
     </message>
     <message>
-        <location line="+23"/>
         <source>&amp;Contents</source>
         <translation>&amp;Inhalt</translation>
     </message>
     <message>
+        <location line="-22"/>
+        <source>&amp;Open...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+1"/>
+        <source>&amp;Save as...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Export as HTML...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
         <source>&amp;About Readesm</source>
         <translation>&amp;Über Readesm</translation>
     </message>
@@ -2646,27 +2992,51 @@
         <translation>Über &amp;Qt</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+14"/>
         <source>About Readesm</source>
         <translation>Über Readesm</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>readesm - Digital tachograph file reader
+
+Free software under GPL v3.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <location line="+15"/>
+        <source>Nothing opened.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-11"/>
+        <source>Save HTML file as</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>HTML files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Version: </source>
         <translation>Version: </translation>
     </message>
     <message>
-        <location line="+2"/>
         <source>Copyright (C) 2011, 2012 by %1 (%2)</source>
         <translation>Copyright (C) 2011, 2012 durch %1 (%2)</translation>
     </message>
     <message>
-        <location line="+4"/>
         <source>This program converts digital tachograph files into human-readable form.</source>
         <translation>Dieses Programm wandelt Tachographendaten in menschenlesbare Form um.</translation>
     </message>
     <message>
-        <location line="+2"/>
         <source>readesm is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 readesm is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with readesm.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</source>
@@ -2675,109 +3045,57 @@ Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen vo
 Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem Programm erhalten haben. Falls nicht, siehe &lt;http://www.gnu.org/licenses/&gt;.</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="-35"/>
         <source>Open Tachograph File</source>
         <translation>Tachographendatei öffnen</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <location line="+63"/>
+        <location line="+1"/>
+        <location line="+49"/>
         <source>Tachograph Files</source>
         <translation>Tachographendateien</translation>
     </message>
     <message>
-        <location line="-63"/>
-        <location line="+42"/>
-        <location line="+21"/>
+        <location line="-49"/>
+        <location line="+34"/>
+        <location line="+15"/>
         <source>All files</source>
         <translation>Alle Dateien</translation>
     </message>
     <message>
-        <location line="-53"/>
         <source>Could not read file</source>
         <translation>Konnte Datei nicht lesen</translation>
     </message>
     <message>
-        <location line="+17"/>
         <source>Print Document</source>
         <translation>Dokument drucken</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+11"/>
-        <location line="+10"/>
-        <location line="+11"/>
+        <location line="-20"/>
+        <location line="+15"/>
         <source>Saving not possible</source>
         <translation>Speichern nicht möglich</translation>
     </message>
     <message>
-        <location line="-32"/>
-        <location line="+21"/>
         <source>Nothing opened, nothing to save.</source>
         <translation>Nichts geöffnet, nichts zu speichern.</translation>
     </message>
     <message>
-        <location line="-17"/>
         <source>Save XHtml file as</source>
         <translation>XHtml-Datei speichern</translation>
     </message>
     <message>
-        <location line="+2"/>
         <source>XHtml files</source>
         <translation>XHtml-Dateien</translation>
     </message>
     <message>
-        <location line="+5"/>
-        <location line="+21"/>
         <source>Could not open file.</source>
         <translation>Konnte Datei nicht öffnen.</translation>
     </message>
     <message>
-        <location line="-7"/>
+        <location line="+4"/>
         <source>Save Tachograph file as</source>
         <translation>Tachographendatei speichern unter</translation>
     </message>
 </context>
-<context>
-    <name>SvgDayActivity</name>
-    <message>
-        <location filename="../../fileformat/PictureGenerators/SvgDayActivity.cpp" line="+23"/>
-        <source>break/rest</source>
-        <translation>Ruhepause</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>short break</source>
-        <translation>kurze Pause</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>working</source>
-        <translation>Arbeit</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>driving</source>
-        <translation>Fahren</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>available</source>
-        <translation>verfügbar</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>unknown</source>
-        <translation>unbekannt</translation>
-    </message>
-</context>
-<context>
-    <name>SvgDayGraph</name>
-    <message>
-        <location filename="../../fileformat/PictureGenerators/SvgDayGraph.cpp" line="+9"/>
-        <source>Time of day (UTC)</source>
-        <translation>Uhrzeit (UTC)</translation>
-    </message>
-</context>
 </TS>
-

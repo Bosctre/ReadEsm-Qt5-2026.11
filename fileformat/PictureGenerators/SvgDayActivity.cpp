@@ -1,4 +1,11 @@
 #include "SvgDayActivity.h"
+#include <QCoreApplication>
+
+namespace {
+// Protège un texte traduit pour du SVG. Les textes eux-mêmes sont écrits plus bas sous la forme
+// esc(QCoreApplication::translate("SvgDayActivity", "...")) : lupdate ne repère que ces appels littéraux.
+QString esc(const QString& s) { return s.toHtmlEscaped(); }
+}
 
 void SvgDayActivity::add(int from, int duration, float height,
                          const QString& color, const QString& title)
@@ -40,17 +47,17 @@ QString SvgDayActivity::toString() const
     s += "\t\t<g style='text-anchor:middle;font-size:16px;'>\n";
     for (int h = 0; h <= 24; ++h)
         s += QString("\t\t\t<text x='%1' y='118'>%2</text>\n").arg(h * 30).arg(h);
-    s += "\t\t\t<text x='360' y='132'>Time of day (UTC)</text>\n";
+    s += "\t\t\t<text x='360' y='132'>" + esc(QCoreApplication::translate("SvgDayActivity", "Time of day (UTC)")) + "</text>\n";
     s += "\t\t</g>\n";
 
     // Légende
     s += "\t\t<g style='font-size:16px;'>\n";
-    s += "\t\t\t<rect x='730' y='6'   width='30' height='16' fill='black'/><text x='765' y='20'>= available</text>\n";
-    s += "\t\t\t<rect x='730' y='26'  width='30' height='16' fill='green'/><text x='765' y='40'>= driving</text>\n";
-    s += "\t\t\t<rect x='730' y='46'  width='30' height='16' fill='yellow'/><text x='765' y='60'>= working</text>\n";
-    s += "\t\t\t<rect x='730' y='66'  width='30' height='16' fill='orange'/><text x='765' y='80'>= short break</text>\n";
-    s += "\t\t\t<rect x='730' y='86'  width='30' height='16' fill='red'/><text x='765' y='100'>= break/rest</text>\n";
-    s += "\t\t\t<rect x='730' y='106' width='30' height='16' fill='purple'/><text x='765' y='120'>= unknown</text>\n";
+    s += "\t\t\t<rect x='730' y='6'   width='30' height='16' fill='black'/><text x='765' y='20'>"  + esc(QCoreApplication::translate("SvgDayActivity", "= available"))   + "</text>\n";
+    s += "\t\t\t<rect x='730' y='26'  width='30' height='16' fill='green'/><text x='765' y='40'>"  + esc(QCoreApplication::translate("SvgDayActivity", "= driving"))     + "</text>\n";
+    s += "\t\t\t<rect x='730' y='46'  width='30' height='16' fill='yellow'/><text x='765' y='60'>" + esc(QCoreApplication::translate("SvgDayActivity", "= working"))     + "</text>\n";
+    s += "\t\t\t<rect x='730' y='66'  width='30' height='16' fill='orange'/><text x='765' y='80'>" + esc(QCoreApplication::translate("SvgDayActivity", "= short break")) + "</text>\n";
+    s += "\t\t\t<rect x='730' y='86'  width='30' height='16' fill='red'/><text x='765' y='100'>"   + esc(QCoreApplication::translate("SvgDayActivity", "= break/rest"))   + "</text>\n";
+    s += "\t\t\t<rect x='730' y='106' width='30' height='16' fill='purple'/><text x='765' y='120'>" + esc(QCoreApplication::translate("SvgDayActivity", "= unknown"))    + "</text>\n";
     s += "\t\t</g>\n";
 
     s += "\t</g>\n</svg>\n";

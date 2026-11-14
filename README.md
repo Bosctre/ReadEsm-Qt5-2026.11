@@ -60,6 +60,7 @@ Tachograph files contain personal data (name, birth date, card number, vehicle p
 
 - Original ReadEsm: © Andreas Gölzer, GNU General Public License v3 or later.
 - Qt5 / Debian 13 port, report structure, timesheet and GUI changes: 2026 (see `CHANGELOG`).
+by Jean-Paul FRAYSSE : https://sourceforge.net/projects/readesm-qt5-2026-11/
 
 This program is free software: you can redistribute it and/or modify it under the terms of the
 GNU General Public License as published by the Free Software Foundation, either version 3 of the

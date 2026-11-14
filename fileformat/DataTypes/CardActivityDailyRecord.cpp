@@ -6,6 +6,7 @@
 #include "../PictureGenerators/SvgDayActivity.h"
 #include "../PictureGenerators/ActivityDrawing.h"
 #include <QObject>
+#include <QCoreApplication>
 #include <algorithm>
 
 CardActivityDailyRecord::CardActivityDailyRecord(const DataPointer& filewalker)
@@ -28,11 +29,11 @@ void CardActivityDailyRecord::printOn(Reporter& report) const {
 
     SvgDayActivity svg;
     ActivityDrawing::drawDay(svg, activities);
-    report.tagValuePair(QObject::tr("Visualization"), svg.toString());
+    report.tagValuePair(QCoreApplication::translate("CardActivityDailyRecord", "Visualization"), svg.toString());
 
     const int n = int(activities.size());
     if (n > 0) {
-        report.beginList(QObject::tr("activityChangeInfos"), n, false);   // replié « (show) »
+        report.beginList(QCoreApplication::translate("CardActivityDailyRecord", "activityChangeInfos"), n, false);   // replié « (show) »
         for (int i = 0; i < n; ++i) {
             const int to = (i + 1 < n) ? activities[i + 1].getMinutes() : 1440;
             ActivityChangeDetail d(start, activities[i], to);

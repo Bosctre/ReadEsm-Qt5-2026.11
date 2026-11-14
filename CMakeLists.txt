@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(readesm)
+set(VERSION_DATE "2026-11-14")
+set(VERSION_STRING "2026.11")
 configure_file(${CMAKE_SOURCE_DIR}/config.h.in ${CMAKE_SOURCE_DIR}/fileformat/config.h)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -8,6 +10,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt5 COMPONENTS Core Widgets Svg LinguistTools REQUIRED)
 file(GLOB TS_FILES "ressources/translations/*.ts")     
 qt5_add_translation(QM_FILES ${TS_FILES})
+add_custom_target(translations ALL DEPENDS ${QM_FILES})
+install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/readesm/translations)
 
 file(GLOB_RECURSE SOURCES "fileformat/*.cpp" "gui/*.cpp")
 list(APPEND SOURCES "readesm.cpp" "OptionParser.cpp")

@@ -1,11 +1,13 @@
 #include "HtmlReporter.h"
 #include "../DataTypes/DataType.h"
 #include "../config.h"
+#include <QCoreApplication>
 #include <QStringList>
 
 namespace {
 
-const char* const HEAD = R"HEAD(<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+// Les textes visibles (liens show/hide, langue) sont remplacés au moment d'écrire le document.
+const char* const HEAD = R"HEAD(<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="%LANG%">
 
 <head>
 	<title>%TITLE%</title>
@@ -27,10 +29,10 @@ const char* const HEAD = R"HEAD(<html xmlns="http://www.w3.org/1999/xhtml" dir="
 			var link = document.getElementById('link' + id);
 			if(toggledContent.style.display != 'none'){
 				toggledContent.style.display = 'none';
-				link.innerHTML = 'show';
+				link.innerHTML = '%SHOW%';
 			} else {
 				toggledContent.style.display = 'block';
-				link.innerHTML = 'hide';
+				link.innerHTML = '%HIDE%';
 			}
 			return false;
 		}
@@ -40,6 +42,17 @@ const char* const HEAD = R"HEAD(<html xmlns="http://www.w3.org/1999/xhtml" dir="
 )HEAD";
 
 inline QString esc(const QString& s) { return s.toHtmlEscaped(); }
+
+// Texte traduit (contexte « HtmlReporter ») ; QCoreApplication::translate est reconnu par lupdate.
+inline QString tr(const char* text) { return QCoreApplication::translate("HtmlReporter", text); }
+
+// Même texte, protégé pour être placé entre apostrophes dans du JavaScript
+inline QString jsEsc(const QString& s) {
+    QString r = s;
+    r.replace(QLatin1Char('\\'), QLatin1String("\\\\"));
+    r.replace(QLatin1Char('\''), QLatin1String("\\'"));
+    return r;
+}
 
 // Une valeur qui est déjà du HTML (graphique SVG, tableau...) est écrite telle quelle
 inline bool isRawHtml(const QString& v) {
@@ -58,12 +71,18 @@ void HtmlReporter::startDocument() {
 }
 
 void HtmlReporter::endDocument() {
-    document  = QString::fromUtf8(HEAD).replace(QLatin1String("%TITLE%"), esc(titleStr));
+    // « en-US » est traduit par « fr-FR », « de-DE »... dans les fichiers de traduction
+    document  = QString::fromUtf8(HEAD)
+                    .replace(QLatin1String("%LANG%"),  esc(tr("en-US")))
+                    .replace(QLatin1String("%TITLE%"), esc(titleStr))
+                    .replace(QLatin1String("%SHOW%"),  jsEsc(tr("show")))
+                    .replace(QLatin1String("%HIDE%"),  jsEsc(tr("hide")));
     document += QString("<h1>%1</h1>\n").arg(esc(titleStr));
-    document += QLatin1String("<h3>Content</h3><ul>") + toc + QLatin1String("</ul>\n");
+    document += QLatin1String("<h3>") + esc(tr("Content")) + QLatin1String("</h3><ul>") + toc + QLatin1String("</ul>\n");
     document += collected;
-    document += QString("\n<hr />\nReport generated with <a href=\"http://www.readesm.sf.net\" target=\"_blank\">Readesm</a> "
-                        "<small>(readesm %1 (%2))</small>.\n</body>\n</html>\n").arg(VERSION).arg(VERSION_DATE);
+    const QString link = QStringLiteral("<a href=\"https://github.com/Bosctre/ReadEsm-Qt5-2026.11\" target=\"_blank\">Readesm</a>");
+    document += QString("\n<hr />\n%1 <small>(readesm %2 (%3))</small>.\n</body>\n</html>\n")
+                    .arg(tr("Report generated with %1").arg(link)).arg(VERSION).arg(VERSION_DATE);
     const QByteArray utf8 = document.toUtf8();
     outputStream.write(utf8.constData(), std::streamsize(utf8.size()));
 }
@@ -110,7 +129,8 @@ void HtmlReporter::writeBlock(const DataType& block, const QString& title) {
     if (!ts.isEmpty()) {
         const int id = ++linkNumber;
         collected += title.isEmpty() ? esc(ts) : QLatin1String("<b>") + esc(ts) + QLatin1String("</b>");
-        collected += QString(" (<a href=\"#link%1\" name=\"link%1\" onclick=\"return toggle_visibility(%1);\" id=\"link%1\">show</a>)").arg(id);
+        collected += QString(" (<a href=\"#link%1\" name=\"link%1\" onclick=\"return toggle_visibility(%1);\" id=\"link%1\">%2</a>)")
+                         .arg(id).arg(esc(tr("show")));
         collected += openToggle(id, false);
     } else {
         collected += QLatin1String("<ul>");
@@ -135,11 +155,11 @@ void HtmlReporter::writeArray(const DataType& array, const QString& title, bool 
     --nestLevel;
 
     if (count == 0 && collected.size() == start) {      // tableau vide
-        collected += QString("<li>No %1.</li>").arg(esc(title));
+        collected += QString("<li>%1</li>").arg(esc(tr("No %1.").arg(title)));
         return;
     }
     QString header = QString("\n<li>%1 %2 (<a href=\"#link%3\" name=\"link%3\" onclick=\"return toggle_visibility(%3);\" id=\"link%3\">%4</a>)")
-                         .arg(count).arg(esc(title)).arg(id).arg(expand ? "hide" : "show");
+                         .arg(count).arg(esc(title)).arg(id).arg(esc(expand ? tr("hide") : tr("show")));
     header += openToggle(id, expand);
     collected.insert(start, header);
     collected += QLatin1String("</ul></li>");
@@ -149,14 +169,14 @@ void HtmlReporter::beginList(const QString& title, int count, bool expand, bool 
     countItem();
     ++nestLevel;
     if (count == 0) {
-        collected += QString("<li>No %1.</li>").arg(esc(title));
+        collected += QString("<li>%1</li>").arg(esc(tr("No %1.").arg(title)));
         listOpen.push_back(false);
         return;
     }
     if (collapsible) {
         const int id = ++linkNumber;
         collected += QString("\n<li>%1 %2 (<a href=\"#link%3\" name=\"link%3\" onclick=\"return toggle_visibility(%3);\" id=\"link%3\">%4</a>)")
-                         .arg(count).arg(esc(title)).arg(id).arg(expand ? "hide" : "show");
+                         .arg(count).arg(esc(title)).arg(id).arg(esc(expand ? tr("hide") : tr("show")));
         collected += openToggle(id, expand);
     } else {
         // liste toujours visible, sans lien show/hide

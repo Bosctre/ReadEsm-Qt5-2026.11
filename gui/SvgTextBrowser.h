@@ -12,6 +12,7 @@
 #include <QSet>
 #include <QUrl>
 #include <QScrollBar>
+#include <QCoreApplication>
 
 /// QTextBrowser n'exécute pas le JavaScript du rapport et ne gère pas les <svg> en ligne.
 /// Cette classe :
@@ -109,9 +110,12 @@ private:
             }
         }
         out += source.midRef(pos);
-        for (int id : expanded)
-            out.replace(QString("id=\"link%1\">show</a>").arg(id),
-                        QString("id=\"link%1\">hide</a>").arg(id));
+        // le texte du lien (« show » ou sa traduction) est remplacé par « hide » traduit
+        const QString hide = QCoreApplication::translate("HtmlReporter", "hide").toHtmlEscaped();
+        for (int id : expanded) {
+            const QRegularExpression link(QString("(id=\"link%1\">)[^<]*(</a>)").arg(id));
+            out.replace(link, "\\1" + hide + "\\2");
+        }
         return out;
     }
 
