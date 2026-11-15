@@ -44,6 +44,20 @@ readesm --help
 
 Options: `-f/--format` (output format), `-l/--locale` (language, e.g. `fr`).
 
+## Installation (Debian 13 / Ubuntu) — paquet .deb
+
+Télécharger `readesm-qt5_2026.11_amd64.deb` (page « Releases » de GitHub ou
+fichiers SourceForge), puis :
+
+    sudo apt install ./readesm-qt5_2026.11_amd64.deb
+
+Le programme s'installe dans `/usr/bin/readesm` et apparaît dans le menu
+des applications. La langue du système est détectée automatiquement
+(fr, ca, de, es, hu, ru ; anglais par défaut), pour l'interface comme pour
+l'export HTML. Pour forcer une langue : `readesm -l fr fichier.ddd`.
+
+Désinstallation : `sudo apt remove readesm-qt5`
+
 ## Reading a driver card
 
 Use [cardpeek](https://github.com/pannzh/cardpeek) with a PC/SC reader: **Analyzer → Tachograph card**,

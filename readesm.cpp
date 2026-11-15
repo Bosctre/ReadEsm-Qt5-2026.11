@@ -45,7 +45,7 @@ int main(int argc, char** argv)
                                              : new QCoreApplication(argc, argv));
     app->setApplicationName("Readesm");
         if (gui) {
-        QIcon ic = QIcon::fromTheme("readesm", QIcon("/usr/local/share/icons/hicolor/scalable/apps/readesm.svg"));
+        QIcon ic = QIcon::fromTheme("readesm", QIcon(QString(PREFIX) + "/share/icons/hicolor/scalable/apps/readesm.svg"));
         QGuiApplication::setWindowIcon(ic);
         QGuiApplication::setDesktopFileName("readesm");     // lien avec readesm.desktop sous Wayland/GNOME
     }

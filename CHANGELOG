@@ -22,7 +22,9 @@ ReadEsm-Qt5 2026.11 (2026-11)
 Readesm changelog
 2011-11
 + optical fixes
-
+- Paquet Debian (.deb) : installation dans /usr, icône et lanceur GNOME,
+  traductions installées dans /usr/share/readesm/translations.
+- Icône de repli calculée à partir de PREFIX (plus de chemin /usr/local en dur).
 2011-10
 + Lots of internal changes
 + Monthly Timesheets
