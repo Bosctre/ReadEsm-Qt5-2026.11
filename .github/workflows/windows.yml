@@ -78,10 +78,10 @@ jobs:
           $dir = "C:\Program Files\ReadEsm-Qt5"
           if (-not (Test-Path "$dir\bin\readesm.exe")) { throw "readesm.exe not installed" }
           if (-not (Test-Path "$dir\translations\readesm_fr.qm")) { throw "translations not installed" }
-          $env:QT_QPA_PLATFORM = 'offscreen'
-          $p = Start-Process -FilePath "$dir\bin\readesm.exe" -PassThru
+          $env:QT_DEBUG_PLUGINS = '1'
+          $p = Start-Process -FilePath "$dir\bin\readesm.exe" -PassThru -RedirectStandardOutput out.txt -RedirectStandardError err.txt
           Start-Sleep -Seconds 8
-          if ($p.HasExited) { throw "readesm exited early, code $($p.ExitCode)" }
+          if ($p.HasExited) { Write-Host "--- stdout ---"; Get-Content out.txt; Write-Host "--- stderr ---"; Get-Content err.txt; throw "readesm exited early, code $($p.ExitCode)" }
           Stop-Process -Id $p.Id
           Write-Host "Smoke test OK"
 
