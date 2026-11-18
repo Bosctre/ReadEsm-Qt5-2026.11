@@ -44,7 +44,13 @@ jobs:
           WDQ=$(command -v windeployqt || command -v windeployqt-qt5 || find /ucrt64 -iname 'windeployqt*.exe' | head -n1)
           echo "windeployqt found: [$WDQ]"
           if [ -z "$WDQ" ]; then echo "--- deploy tools present ---"; find /ucrt64 -iname '*deploy*' | head -20; exit 1; fi
-          "$WDQ" --release --no-translations --no-opengl-sw --no-system-d3d-compiler stage/bin/readesm.exe
+          "$WDQ" --release --no-translations --no-opengl-sw --no-angle --no-system-d3d-compiler stage/bin/readesm.exe
+          echo "--- copying third-party DLLs from /ucrt64/bin ---"
+          for i in 1 2 3; do
+            for dll in $(ldd stage/bin/readesm.exe $(find stage/bin -name '*.dll') 2>/dev/null | grep -i '/ucrt64/bin' | awk '{print $3}' | sort -u); do
+              cp -n "$dll" stage/bin/
+            done
+          done
           echo "--- DLL dependencies (informational) ---"
           ldd stage/bin/readesm.exe | grep -v -i '/c/windows' || true
           ls stage/translations
