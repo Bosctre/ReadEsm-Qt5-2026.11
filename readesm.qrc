@@ -5,6 +5,7 @@
 	<file>greeting.xhtml</file>
 	<file>homepage/style.css</file>
 	<file>ressources/icons/readesm.svg</file>
+	<file alias="readesm.svg">readesm.svg</file>
 	<file>template.html</file>
 </qresource>
 <qresource lang="es">
