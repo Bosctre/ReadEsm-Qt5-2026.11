@@ -41,7 +41,10 @@ jobs:
           find build -name 'readesm_*.qm' -exec cp {} stage/translations/ \;
           cp COPYING stage/doc/COPYING.txt
           cp installer/THIRD-PARTY.txt stage/doc/
-          windeployqt --release --no-translations --no-opengl-sw --no-system-d3d-compiler stage/bin/readesm.exe
+          WDQ=$(command -v windeployqt || command -v windeployqt-qt5 || find /ucrt64 -iname 'windeployqt*.exe' | head -n1)
+          echo "windeployqt found: [$WDQ]"
+          if [ -z "$WDQ" ]; then echo "--- deploy tools present ---"; find /ucrt64 -iname '*deploy*' | head -20; exit 1; fi
+          "$WDQ" --release --no-translations --no-opengl-sw --no-system-d3d-compiler stage/bin/readesm.exe
           echo "--- DLL dependencies (informational) ---"
           ldd stage/bin/readesm.exe | grep -v -i '/c/windows' || true
           ls stage/translations
