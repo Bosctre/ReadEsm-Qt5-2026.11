@@ -1,0 +1,73 @@
+name: Windows installer
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-qt5-base
+            mingw-w64-x86_64-qt5-svg
+            mingw-w64-x86_64-qt5-tools
+
+      - name: Configure and build
+        run: |
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build
+
+      - name: Stage files (program, Qt DLLs, translations, licences)
+        run: |
+          mkdir -p stage/bin stage/translations stage/doc
+          cp build/readesm.exe stage/bin/
+          find build -name 'readesm_*.qm' -exec cp {} stage/translations/ \;
+          cp COPYING stage/doc/COPYING.txt
+          cp installer/THIRD-PARTY.txt stage/doc/
+          windeployqt --release --no-translations --no-opengl-sw --no-system-d3d-compiler stage/bin/readesm.exe
+          echo "--- DLL dependencies (informational) ---"
+          ldd stage/bin/readesm.exe | grep -v -i '/c/windows' || true
+          ls stage/translations
+
+      - name: Install NSIS
+        shell: pwsh
+        run: choco install nsis -y --no-progress
+
+      - name: Build installer
+        run: |
+          VERSION=$(sed -n 's/.*set(VERSION_STRING "\(.*\)").*/\1/p' CMakeLists.txt)
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          "/c/Program Files (x86)/NSIS/makensis.exe" \
+            -DVERSION="$VERSION" \
+            -DSTAGE="$(cygpath -w "$PWD/stage")" \
+            -DOUTFILE="$(cygpath -w "$PWD/readesm-qt5_${VERSION}_windows-x64-setup.exe")" \
+            "$(cygpath -w "$PWD/installer/readesm.nsi")"
+          ls -l readesm-qt5_*_setup.exe
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer
+          path: readesm-qt5_*_setup.exe
+
+      - name: Attach to the GitHub release (tag builds only)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: readesm-qt5_*_setup.exe
