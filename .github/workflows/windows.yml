@@ -70,6 +70,21 @@ jobs:
             "$(cygpath -w "$PWD/installer/readesm.nsi")"
           ls -l readesm-qt5_*-setup.exe
 
+      - name: Smoke test (silent install, start the program)
+        shell: pwsh
+        run: |
+          $setup = Get-ChildItem readesm-qt5_*-setup.exe | Select-Object -First 1
+          Start-Process -FilePath $setup.FullName -ArgumentList '/S' -Wait
+          $dir = "C:\Program Files\ReadEsm-Qt5"
+          if (-not (Test-Path "$dir\bin\readesm.exe")) { throw "readesm.exe not installed" }
+          if (-not (Test-Path "$dir\translations\readesm_fr.qm")) { throw "translations not installed" }
+          $env:QT_QPA_PLATFORM = 'offscreen'
+          $p = Start-Process -FilePath "$dir\bin\readesm.exe" -PassThru
+          Start-Sleep -Seconds 8
+          if ($p.HasExited) { throw "readesm exited early, code $($p.ExitCode)" }
+          Stop-Process -Id $p.Id
+          Write-Host "Smoke test OK"
+
       - uses: actions/upload-artifact@v4
         with:
           name: windows-installer
