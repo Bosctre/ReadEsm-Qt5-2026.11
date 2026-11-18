@@ -1,0 +1,20 @@
+ReadEsm-Qt5 is free software (GNU GPL v3 or later). Source code:
+https://github.com/Bosctre/ReadEsm-Qt5-2026.11
+Based on ReadESM by Andreas Goelzer.
+
+This installer ships, as dynamic libraries (DLL files), components under
+other licences:
+
+- Qt 5 (Core, Gui, Widgets, Svg): GNU LGPL v3 and other licences,
+  https://www.qt.io/ ; source: https://code.qt.io/
+- MinGW-w64 runtime (libstdc++, libgcc, winpthreads): GPL with runtime
+  library exception.
+- Libraries used by Qt (PCRE2, zlib, HarfBuzz, FreeType, libpng, ...):
+  their own free licences.
+
+These binaries were built with MSYS2 (https://www.msys2.org/); the sources of
+each package are available from the MSYS2 project.
+Because the libraries are separate DLL files, you may replace them with your
+own build.
+
+Tachograph files contain personal data of the driver: do not publish real files.
