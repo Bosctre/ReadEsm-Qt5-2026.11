@@ -68,15 +68,15 @@ jobs:
             -DSTAGE="$(cygpath -w "$PWD/stage")" \
             -DOUTFILE="$(cygpath -w "$PWD/readesm-qt5_${VERSION}_windows-x64-setup.exe")" \
             "$(cygpath -w "$PWD/installer/readesm.nsi")"
-          ls -l readesm-qt5_*_setup.exe
+          ls -l readesm-qt5_*-setup.exe
 
       - uses: actions/upload-artifact@v4
         with:
           name: windows-installer
-          path: readesm-qt5_*_setup.exe
+          path: readesm-qt5_*-setup.exe
 
       - name: Attach to the GitHub release (tag builds only)
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: readesm-qt5_*_setup.exe
+          files: readesm-qt5_*-setup.exe
