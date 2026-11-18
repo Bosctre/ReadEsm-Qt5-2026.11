@@ -26,7 +26,12 @@ endforeach()
 qt5_wrap_cpp(MOC_SRCS ${QT_HEADERS})
 
 add_executable(readesm ${SOURCES} ${RCC_SRCS} ${MOC_SRCS})
-target_link_libraries(readesm Qt5::Widgets Qt5::Svg Qt5::Core gcrypt gmp)
+target_link_libraries(readesm Qt5::Widgets Qt5::Svg Qt5::Core)
+# gcrypt and GMP are only needed for signature checking (HAVE_CRYPTO), which is
+# not enabled; they are linked on Unix only, as before. Not available on Windows.
+if(NOT WIN32)
+    target_link_libraries(readesm gcrypt gmp)
+endif()
 target_compile_options(readesm PRIVATE -include QCoreApplication)
 
 # Traductions : les .ts sont compilés en .qm à chaque construction
