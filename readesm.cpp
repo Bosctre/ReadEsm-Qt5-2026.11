@@ -18,6 +18,27 @@
 #include "gui/mainWindow.h"
 #include "OptionParser.h"
 
+#ifdef Q_OS_WIN
+// Windows: graphical program without console window. When started from a console
+// (command-line use), attach to it so that its messages remain visible.
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#include <cstdio>
+namespace {
+struct ParentConsoleAttach {
+    ParentConsoleAttach() {
+        if (!AttachConsole(ATTACH_PARENT_PROCESS)) return;
+        if (GetFileType(GetStdHandle(STD_OUTPUT_HANDLE)) == FILE_TYPE_UNKNOWN) freopen("CONOUT$", "w", stdout);
+        if (GetFileType(GetStdHandle(STD_ERROR_HANDLE)) == FILE_TYPE_UNKNOWN) freopen("CONOUT$", "w", stderr);
+    }
+};
+const ParentConsoleAttach parentConsoleAttach;
+}
+#endif
+
 int main(int argc, char** argv)
 {
     QTextStream cerr(stderr);

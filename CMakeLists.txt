@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(readesm)
+if(WIN32)
+    enable_language(RC)
+endif()
 set(VERSION_DATE "2026-11-14")
 set(VERSION_STRING "2026.11")
 configure_file(${CMAKE_SOURCE_DIR}/config.h.in ${CMAKE_SOURCE_DIR}/fileformat/config.h)
@@ -33,6 +36,13 @@ if(NOT WIN32)
     target_link_libraries(readesm gcrypt gmp)
 endif()
 target_compile_options(readesm PRIVATE -include QCoreApplication)
+
+if(WIN32)
+    # Windows: graphical program (no console window), with the ReadEsm icon in the .exe
+    set_target_properties(readesm PROPERTIES WIN32_EXECUTABLE ON)
+    file(WRITE ${CMAKE_BINARY_DIR}/readesm_icon.rc "1 ICON \"${CMAKE_SOURCE_DIR}/readesm.ico\"\n")
+    target_sources(readesm PRIVATE ${CMAKE_BINARY_DIR}/readesm_icon.rc)
+endif()
 
 # Traductions : les .ts sont compilés en .qm à chaque construction
 include(GNUInstallDirs)
