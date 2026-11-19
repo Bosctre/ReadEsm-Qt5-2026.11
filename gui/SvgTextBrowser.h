@@ -37,6 +37,7 @@ public:
 
     void setHtmlWithSvg(const QString& html) {
         svgs.clear();
+        images.clear();
         expanded.clear();
         QString out;
         out.reserve(html.size());
@@ -54,6 +55,7 @@ public:
         }
         out += html.midRef(last);
         source = out;
+        indexToggles();
         refresh(false);
     }
 
@@ -63,12 +65,16 @@ protected:
             bool ok = false;
             const int idx = name.path().toInt(&ok);
             if (ok && idx >= 0 && idx < svgs.size()) {
+                if (idx < images.size() && !images[idx].isNull()) return images[idx];
                 QSvgRenderer renderer(svgs[idx]);
                 if (renderer.isValid()) {
                     QImage img(renderer.defaultSize(), QImage::Format_RGB32);
                     img.fill(Qt::white);
                     QPainter p(&img);
                     renderer.render(&p);
+                    p.end();
+                    if (idx >= images.size()) images.resize(svgs.size());
+                    images[idx] = img;
                     return img;
                 }
             }
@@ -82,39 +88,86 @@ private:
         refresh(true);
     }
 
+    /// Repère une seule fois, à la lecture du rapport, tous les blocs repliés
+    /// <ul name="toggledN" style="display:none" ...> ... </ul> (même imbriqués).
+    void indexToggles() {
+        toggles.clear();
+        static const QString openTag = QStringLiteral("<ul name=\"toggled");
+        static const QString anyOpen = QStringLiteral("<ul");
+        static const QString closeTag = QStringLiteral("</ul>");
+        const int n = source.size();
+        QVector<int> stack;                 // indices dans toggles des blocs repliés ouverts
+        QVector<bool> isToggle;             // pour chaque <ul> ouvert : est-ce un bloc replié ?
+        int i = 0;
+        while (true) {
+            i = source.indexOf(QLatin1Char('<'), i);
+            if (i < 0) break;
+            if (source.midRef(i, 5) == closeTag) {
+                const int end = i + 5;
+                if (!isToggle.isEmpty()) {
+                    if (isToggle.last()) { toggles[stack.last()].closeEnd = end; stack.removeLast(); }
+                    isToggle.removeLast();
+                }
+                i = end;
+            } else if (source.midRef(i, 3) == anyOpen &&
+                       (i + 3 < n) && (source.at(i + 3) == QLatin1Char(' ') || source.at(i + 3) == QLatin1Char('>'))) {
+                const int gt = source.indexOf(QLatin1Char('>'), i);
+                if (gt < 0) break;
+                bool toggle = false;
+                if (source.midRef(i, openTag.size()) == openTag) {
+                    // lecture manuelle de l'identifiant (une expression régulière appliquée
+                    // des milliers de fois sur tout le rapport serait très lente)
+                    int d = i + openTag.size();
+                    int id = 0, digits = 0;
+                    while (d < n && source.at(d).isDigit() && digits < 9) {
+                        id = id * 10 + source.at(d).digitValue();
+                        ++d; ++digits;
+                    }
+                    if (digits > 0) {
+                        const QString expect = QString("<ul name=\"toggled%1\" style=\"display:none\" id=\"toggled%1\">").arg(id);
+                        if (source.midRef(i, expect.size()) == expect) {
+                            Toggle t;
+                            t.id = id;
+                            t.openStart = i;
+                            t.openEnd = i + expect.size();
+                            t.closeEnd = n;
+                            toggles.append(t);
+                            stack.append(toggles.size() - 1);
+                            toggle = true;
+                        }
+                    }
+                }
+                isToggle.append(toggle);
+                i = toggle ? toggles.last().openEnd : gt + 1;
+            } else {
+                ++i;
+            }
+        }
+    }
+
     /// Construit le HTML affiché : blocs repliés supprimés, blocs dépliés montrés.
     QString applyToggles() const {
-        static const QRegularExpression open(
-            "<ul name=\"toggled(\\d+)\" style=\"display:none\" id=\"toggled\\d+\">");
         QString out;
-        out.reserve(source.size());
+        out.reserve(source.size() / 4);
         int pos = 0;
-        while (true) {
-            const QRegularExpressionMatch m = open.match(source, pos);
-            if (!m.hasMatch()) break;
-            out += source.midRef(pos, m.capturedStart() - pos);
-            const int id = m.captured(1).toInt();
-            if (expanded.contains(id)) {
+        for (const Toggle& t : toggles) {
+            if (t.openStart < pos) continue;              // dans un bloc replié déjà sauté
+            out += source.midRef(pos, t.openStart - pos);
+            if (expanded.contains(t.id)) {
                 out += QStringLiteral("<ul>");
-                pos = m.capturedEnd();                 // le contenu est traité à la suite
+                pos = t.openEnd;                          // le contenu est traité à la suite
             } else {
-                int depth = 1, i = m.capturedEnd();    // sauter jusqu'au </ul> correspondant
-                while (depth > 0 && i < source.size()) {
-                    const int o = source.indexOf(QLatin1String("<ul"), i);
-                    const int c = source.indexOf(QLatin1String("</ul>"), i);
-                    if (c < 0) { i = source.size(); break; }
-                    if (o >= 0 && o < c) { ++depth; i = o + 3; }
-                    else { --depth; i = c + 5; }
-                }
-                pos = i;
+                pos = t.closeEnd;                         // bloc replié : supprimé
             }
         }
         out += source.midRef(pos);
         // le texte du lien (« show » ou sa traduction) est remplacé par « hide » traduit
-        const QString hide = QCoreApplication::translate("HtmlReporter", "hide").toHtmlEscaped();
-        for (int id : expanded) {
-            const QRegularExpression link(QString("(id=\"link%1\">)[^<]*(</a>)").arg(id));
-            out.replace(link, "\\1" + hide + "\\2");
+        if (!expanded.isEmpty()) {
+            const QString hide = QCoreApplication::translate("HtmlReporter", "hide").toHtmlEscaped();
+            for (int id : expanded) {
+                const QRegularExpression link(QString("(id=\"link%1\">)[^<]*(</a>)").arg(id));
+                out.replace(link, "\\1" + hide + "\\2");
+            }
         }
         return out;
     }
@@ -125,9 +178,12 @@ private:
         if (keepScroll) verticalScrollBar()->setValue(y);
     }
 
+    struct Toggle { int id = 0; int openStart = 0; int openEnd = 0; int closeEnd = 0; };
+    QVector<Toggle> toggles;
     QString source;
     QSet<int> expanded;
     QVector<QByteArray> svgs;
+    QVector<QImage> images;
 };
 
 #endif // SVGTEXTBROWSER_H
