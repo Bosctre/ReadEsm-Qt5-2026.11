@@ -2,7 +2,7 @@
 #include <QDateTime>
 
 
-static const QDateTime EPOCH_TACHO = QDateTime(QDate(1992, 1, 1), QTime(0, 0), Qt::UTC);
+static const QDateTime EPOCH_TACHO = QDateTime::fromSecsSinceEpoch(694224000).toUTC();   // 1992-01-01 00:00 UTC
 
 DataPointerTime::DataPointerTime()
     : m_valid(false), m_dt()

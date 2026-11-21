@@ -1,4 +1,4 @@
 /* #undef HAVE_CRYPTO */
-#define VERSION ""
-#define VERSION_DATE ""
+#define VERSION "2026.11"
+#define VERSION_DATE "2026-11-14"
 #define PREFIX "/usr/local"

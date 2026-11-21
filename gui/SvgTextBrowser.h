@@ -7,6 +7,7 @@
 #include <QImage>
 #include <QPainter>
 #include <QRegularExpression>
+#include <QStringView>
 #include <QByteArray>
 #include <QVector>
 #include <QSet>
@@ -47,13 +48,13 @@ public:
         QRegularExpressionMatchIterator it = re.globalMatch(html);
         while (it.hasNext()) {
             const QRegularExpressionMatch m = it.next();
-            out += html.midRef(last, m.capturedStart() - last);
+            out.append(html.constData() + last, m.capturedStart() - last);
             // saut de ligne : le libellé « Visualization: » reste au-dessus du graphique
             out += QString("<br/><img src=\"svg:%1\" />").arg(svgs.size());
             svgs.append(m.captured().toUtf8());
             last = m.capturedEnd();
         }
-        out += html.midRef(last);
+        out.append(html.constData() + last, html.size() - last);
         source = out;
         indexToggles();
         refresh(false);
@@ -102,19 +103,19 @@ private:
         while (true) {
             i = source.indexOf(QLatin1Char('<'), i);
             if (i < 0) break;
-            if (source.midRef(i, 5) == closeTag) {
+            if (QStringView(source).mid(i, 5) == QStringView(closeTag)) {
                 const int end = i + 5;
                 if (!isToggle.isEmpty()) {
                     if (isToggle.last()) { toggles[stack.last()].closeEnd = end; stack.removeLast(); }
                     isToggle.removeLast();
                 }
                 i = end;
-            } else if (source.midRef(i, 3) == anyOpen &&
+            } else if (QStringView(source).mid(i, 3) == QStringView(anyOpen) &&
                        (i + 3 < n) && (source.at(i + 3) == QLatin1Char(' ') || source.at(i + 3) == QLatin1Char('>'))) {
                 const int gt = source.indexOf(QLatin1Char('>'), i);
                 if (gt < 0) break;
                 bool toggle = false;
-                if (source.midRef(i, openTag.size()) == openTag) {
+                if (QStringView(source).mid(i, openTag.size()) == QStringView(openTag)) {
                     // lecture manuelle de l'identifiant (une expression régulière appliquée
                     // des milliers de fois sur tout le rapport serait très lente)
                     int d = i + openTag.size();
@@ -125,7 +126,7 @@ private:
                     }
                     if (digits > 0) {
                         const QString expect = QString("<ul name=\"toggled%1\" style=\"display:none\" id=\"toggled%1\">").arg(id);
-                        if (source.midRef(i, expect.size()) == expect) {
+                        if (QStringView(source).mid(i, expect.size()) == QStringView(expect)) {
                             Toggle t;
                             t.id = id;
                             t.openStart = i;
@@ -152,7 +153,7 @@ private:
         int pos = 0;
         for (const Toggle& t : toggles) {
             if (t.openStart < pos) continue;              // dans un bloc replié déjà sauté
-            out += source.midRef(pos, t.openStart - pos);
+            out.append(source.constData() + pos, t.openStart - pos);
             if (expanded.contains(t.id)) {
                 out += QStringLiteral("<ul>");
                 pos = t.openEnd;                          // le contenu est traité à la suite
@@ -160,7 +161,7 @@ private:
                 pos = t.closeEnd;                         // bloc replié : supprimé
             }
         }
-        out += source.midRef(pos);
+        out.append(source.constData() + pos, source.size() - pos);
         // le texte du lien (« show » ou sa traduction) est remplacé par « hide » traduit
         if (!expanded.isEmpty()) {
             const QString hide = QCoreApplication::translate("HtmlReporter", "hide").toHtmlEscaped();

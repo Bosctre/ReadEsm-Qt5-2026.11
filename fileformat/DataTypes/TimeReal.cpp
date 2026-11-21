@@ -13,7 +13,7 @@ QString TimeReal::className() const { return "TimeReal"; }
 int TimeReal::size() const { return 4; }
 
 QDateTime TimeReal::toDateTime() const {
-    return QDateTime::fromSecsSinceEpoch(qint64(secs), Qt::UTC);
+    return QDateTime::fromSecsSinceEpoch(qint64(secs)).toUTC();
 }
 
 QString TimeReal::toString() const {

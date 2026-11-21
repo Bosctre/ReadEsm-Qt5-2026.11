@@ -7,16 +7,24 @@ set(VERSION_DATE "2026-11-14")
 set(VERSION_STRING "2026.11")
 configure_file(${CMAKE_SOURCE_DIR}/config.h.in ${CMAKE_SOURCE_DIR}/fileformat/config.h)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5 COMPONENTS Core Widgets Svg LinguistTools REQUIRED)
+# Qt 6 si disponible, sinon Qt 5.15 (commandes sans numero : qt_add_resources, etc.)
+option(WITH_QT5 "Build with Qt 5.15 even if Qt 6 is available" OFF)
+if(WITH_QT5)
+    set(QT_VERSION_MAJOR 5)
+else()
+    find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
+endif()
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Svg LinguistTools)
+message(STATUS "Qt version: ${QT_VERSION_MAJOR}")
 
 file(GLOB_RECURSE SOURCES "fileformat/*.cpp" "gui/*.cpp")
 list(APPEND SOURCES "readesm.cpp" "OptionParser.cpp")
 file(GLOB_RECURSE HEADERS "fileformat/*.h" "gui/*.h" "*.h")
 
-qt5_add_resources(RCC_SRCS readesm.qrc)
+qt_add_resources(RCC_SRCS readesm.qrc)
 
 # Detect headers with Q_OBJECT for moc
 set(QT_HEADERS)
@@ -26,10 +34,10 @@ foreach(h ${HEADERS})
         list(APPEND QT_HEADERS ${h})
     endif()
 endforeach()
-qt5_wrap_cpp(MOC_SRCS ${QT_HEADERS})
+qt_wrap_cpp(MOC_SRCS ${QT_HEADERS})
 
 add_executable(readesm ${SOURCES} ${RCC_SRCS} ${MOC_SRCS})
-target_link_libraries(readesm Qt5::Widgets Qt5::Svg Qt5::Core)
+target_link_libraries(readesm Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Svg Qt${QT_VERSION_MAJOR}::Core)
 # gcrypt and GMP are only needed for signature checking (HAVE_CRYPTO), which is
 # not enabled; they are linked on Unix only, as before. Not available on Windows.
 if(NOT WIN32)
@@ -47,7 +55,7 @@ endif()
 # Traductions : les .ts sont compilés en .qm à chaque construction
 include(GNUInstallDirs)
 file(GLOB TS_FILES "ressources/translations/*.ts")
-qt5_add_translation(QM_FILES ${TS_FILES})
+qt_add_translation(QM_FILES ${TS_FILES})
 add_custom_target(translations ALL DEPENDS ${QM_FILES})
 
 install(TARGETS readesm RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
