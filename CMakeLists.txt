@@ -39,8 +39,8 @@ qt_wrap_cpp(MOC_SRCS ${QT_HEADERS})
 add_executable(readesm ${SOURCES} ${RCC_SRCS} ${MOC_SRCS})
 target_link_libraries(readesm Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Svg Qt${QT_VERSION_MAJOR}::Core)
 # gcrypt and GMP are only needed for signature checking (HAVE_CRYPTO), which is
-# not enabled; they are linked on Unix only, as before. Not available on Windows.
-if(NOT WIN32)
+# not enabled; they are linked on Linux/BSD only, as before. Not needed on Windows or macOS.
+if(UNIX AND NOT APPLE)
     target_link_libraries(readesm gcrypt gmp)
 endif()
 target_compile_options(readesm PRIVATE -include QCoreApplication)

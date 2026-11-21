@@ -7,7 +7,7 @@ a monthly timesheet, events, faults, vehicles used and places.
 *Lecteur de fichiers de chronotachygraphe numérique (`.ddd`, `.esm`) : rapport HTML lisible avec un
 graphique d'activité 0–24 h par jour et un récapitulatif mensuel.*
 
-This is a **port of ReadEsm to Qt5 and Debian 13**, based on the original program by
+This is a **port of ReadEsm to Qt (Qt 6, Qt 5.15 still supported) and Debian 13**, also built for Windows, based on the original program by
 **Andreas Gölzer** (<http://andreas.goelzer.de>). It is not the official upstream release.
 
 ## Features
@@ -19,19 +19,53 @@ This is a **port of ReadEsm to Qt5 and Debian 13**, based on the original progra
 - Monthly **Timesheet** tables (driving, work, rest, available, with a Summary row).
 - Per-day list of every activity change (collapsible).
 - HTML report identical in structure to the original ReadEsm report.
-- Qt5 window with embedded graphs, or command-line conversion without a display.
+- Qt window with embedded graphs, or command-line conversion without a display.
+
+## Downloads
+
+- Debian 13 / Ubuntu package (`.deb`), Windows installer, source archives (`.tar.xz`, `.zip`):
+  [GitHub Releases](https://github.com/Bosctre/ReadEsm-Qt5-2026.11/releases) and
+  [SourceForge](https://sourceforge.net/projects/readesm-qt5-2026-11/files/).
+- macOS: no ready-made package, see "Build on macOS" below.
 
 ## Build (Debian 13)
 
+With Qt 6 (default when installed):
+
 ```bash
-sudo apt install build-essential cmake qtbase5-dev libqt5svg5-dev libgcrypt20-dev libgmp-dev
+sudo apt install build-essential cmake qt6-base-dev qt6-svg-dev qt6-tools-dev qt6-tools-dev-tools libgl-dev
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local ..
 make -j$(nproc)
 sudo make install
 ```
 
+With Qt 5.15 instead: install `qtbase5-dev libqt5svg5-dev qttools5-dev qttools5-dev-tools`
+(instead of the `qt6-…` packages) and add `-DWITH_QT5=ON` to the `cmake` command.
+The libraries `libgcrypt20-dev libgmp-dev` are also needed on Linux.
+
 Uninstall: `sudo xargs rm -v < build/install_manifest.txt`
+
+## Windows
+
+A 64-bit installer (`readesm-qt5_<version>_windows-x64-setup.exe`, Windows 10/11) is built by GitHub Actions
+(`.github/workflows/windows.yml`, MSYS2 with Qt 5). It is **not signed**: Windows SmartScreen shows a warning
+("More info" → "Run anyway").
+
+## Build on macOS (from source, untested)
+
+There is no macOS package yet and the program has not been tried on a Mac. It should build with Homebrew:
+
+```bash
+brew install cmake qt
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="$(brew --prefix qt)"
+cmake --build build
+cd build && ./readesm card.ddd      # run from this folder so that the translations (*.qm) are found
+```
+
+Optional installation: add `-DCMAKE_INSTALL_PREFIX=/usr/local` to the first command, then
+`sudo cmake --install build`. The libraries gcrypt and GMP are not needed on macOS.
+Reports and corrections from Mac users are welcome (GitHub "Issues"); please never attach real `.ddd` files.
 
 ## Usage
 
