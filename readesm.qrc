@@ -17,4 +17,22 @@
 <qresource lang="hu">
 	<file alias="greeting.xhtml">greeting_hu.xhtml</file>
 </qresource>
+<qresource lang="it">
+	<file alias="greeting.xhtml">greeting_it.xhtml</file>
+</qresource>
+<qresource lang="pt">
+	<file alias="greeting.xhtml">greeting_pt.xhtml</file>
+</qresource>
+<qresource lang="nl">
+	<file alias="greeting.xhtml">greeting_nl.xhtml</file>
+</qresource>
+<qresource lang="sv">
+	<file alias="greeting.xhtml">greeting_sv.xhtml</file>
+</qresource>
+<qresource lang="da">
+	<file alias="greeting.xhtml">greeting_da.xhtml</file>
+</qresource>
+<qresource lang="pl">
+	<file alias="greeting.xhtml">greeting_pl.xhtml</file>
+</qresource>
 </RCC>
