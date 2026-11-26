@@ -35,4 +35,13 @@
 <qresource lang="pl">
 	<file alias="greeting.xhtml">greeting_pl.xhtml</file>
 </qresource>
+<qresource lang="cs">
+	<file alias="greeting.xhtml">greeting_cs.xhtml</file>
+</qresource>
+<qresource lang="sk">
+	<file alias="greeting.xhtml">greeting_sk.xhtml</file>
+</qresource>
+<qresource lang="ro">
+	<file alias="greeting.xhtml">greeting_ro.xhtml</file>
+</qresource>
 </RCC>
