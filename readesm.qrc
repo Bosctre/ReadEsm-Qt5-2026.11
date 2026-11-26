@@ -44,4 +44,19 @@
 <qresource lang="ro">
 	<file alias="greeting.xhtml">greeting_ro.xhtml</file>
 </qresource>
+<qresource lang="fi">
+	<file alias="greeting.xhtml">greeting_fi.xhtml</file>
+</qresource>
+<qresource lang="el">
+	<file alias="greeting.xhtml">greeting_el.xhtml</file>
+</qresource>
+<qresource lang="hr">
+	<file alias="greeting.xhtml">greeting_hr.xhtml</file>
+</qresource>
+<qresource lang="sl">
+	<file alias="greeting.xhtml">greeting_sl.xhtml</file>
+</qresource>
+<qresource lang="bg">
+	<file alias="greeting.xhtml">greeting_bg.xhtml</file>
+</qresource>
 </RCC>
