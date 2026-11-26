@@ -59,4 +59,13 @@
 <qresource lang="bg">
 	<file alias="greeting.xhtml">greeting_bg.xhtml</file>
 </qresource>
+<qresource lang="lt">
+	<file alias="greeting.xhtml">greeting_lt.xhtml</file>
+</qresource>
+<qresource lang="lv">
+	<file alias="greeting.xhtml">greeting_lv.xhtml</file>
+</qresource>
+<qresource lang="et">
+	<file alias="greeting.xhtml">greeting_et.xhtml</file>
+</qresource>
 </RCC>
