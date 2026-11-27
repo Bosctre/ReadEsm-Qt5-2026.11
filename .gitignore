@@ -36,3 +36,5 @@ report*.html
 rapport*.html
 exemple*.*
 
+
+build*/
