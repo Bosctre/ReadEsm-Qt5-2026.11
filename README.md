@@ -78,6 +78,12 @@ readesm --help
 
 Options: `-f/--format` (output format), `-l/--locale` (language, e.g. `fr`).
 
+## Languages
+
+The interface and the HTML export are available in English and in 25 languages: all 24 official EU languages, plus Catalan and Russian (`bg, ca, cs, da, de, el, es, et, fi, fr, ga, hr, hu, it, lt, lv, mt, nl, pl, pt, ro, ru, sk, sl, sv`). The language follows the system; use `readesm -l <code> file.ddd` to force one. Portuguese is European Portuguese (`pt_PT`).
+
+ca, de, es, fr, hu and ru come from earlier work. The 19 others (bg, cs, da, el, et, fi, ga, hr, it, lt, lv, mt, nl, pl, pt, ro, sk, sl, sv) were added in 2026 with the help of an AI assistant and **have not been reviewed by native speakers**: corrections to the `.ts` files in `ressources/translations/` are very welcome.
+
 ## Installation (Debian 13 / Ubuntu) — paquet .deb
 
 Télécharger `readesm-qt5_2026.11_amd64.deb` (page « Releases » de GitHub ou
@@ -87,7 +93,7 @@ fichiers SourceForge), puis :
 
 Le programme s'installe dans `/usr/bin/readesm` et apparaît dans le menu
 des applications. La langue du système est détectée automatiquement
-(fr, ca, de, es, hu, ru ; anglais par défaut), pour l'interface comme pour
+(bg, ca, cs, da, de, el, es, et, fi, fr, ga, hr, hu, it, lt, lv, mt, nl, pl, pt, ro, ru, sk, sl, sv ; anglais par défaut), pour l'interface comme pour
 l'export HTML. Pour forcer une langue : `readesm -l fr fichier.ddd`.
 
 Désinstallation : `sudo apt remove readesm-qt5`

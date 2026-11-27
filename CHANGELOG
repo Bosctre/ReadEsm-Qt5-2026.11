@@ -18,6 +18,9 @@ ReadEsm-Qt5 2026.11 (2026-11)
   * Console mode works without a display; missing translations no longer print a message.
   * Application icon and desktop launcher; install rules in CMake.
   * Removed unused files (obsolete data type headers, old packaging).
+  * New translations (machine-assisted, to be reviewed by native speakers): bg, cs, da, el, et,
+    fi, ga, hr, it, lt, lv, mt, nl, pl, pt (pt_PT), ro, sk, sl, sv, with welcome pages;
+    the 24 official EU languages are now covered (plus ca and ru).
 
 Readesm changelog
 2011-11
