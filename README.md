@@ -100,7 +100,7 @@ Désinstallation : `sudo apt remove readesm-qt5`
 
 ## Reading a driver card
 
-Use [cardpeek](https://github.com/pannzh/cardpeek) with a PC/SC reader: **Analyzer → Tachograph card**,
+Use [cardpeek](https://github.com/L1L1/cardpeek) with a PC/SC reader: **Analyzer → Tachograph card**,
 then save the `.ddd` file. With cardpeek 0.8.4 and a recent Lua, the script `tachograph.lua` may stop on
 `attempt to index a nil value (local 'conversion')`; guard the `iconv.open` call in `Tacho_TEXT_8859`
 (use `pcall` and fall back to the plain text conversion).
